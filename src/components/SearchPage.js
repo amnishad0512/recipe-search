@@ -13,7 +13,7 @@ const SearchPage = () => {
     )
       .then((res) => res.json())
       .then((res) => setRecipeList(res.hits));
-    console.log("recipe=>", recipeList[0]);
+    console.log("recipe=>", recipeList);
   }, []);
 
   function handleInput(e) {
