@@ -5,20 +5,23 @@ const SearchPage = () => {
   const [recipe, setRecipe] = useState("");
   const [recipeList, setRecipeList] = useState([]);
 
-  useEffect(() => {
-    fetch(
+  async function fetchRecipe() {
+    await fetch(
       `https://api.edamam.com/search?app_id=eb10855f&app_key=a3b13f3aec7fc48dc23d56886270390c&q=${
         recipe ? recipe : "pizza"
       }`
     )
-      .then((res) => res.json())
-      .then((res) => setRecipeList(res.hits));
+      .then(async (res) => await res.json())
+      .then(async (res) => setRecipeList(res.hits));
     console.log("recipe=>", recipeList);
-  }, []);
+  }
+
+  useEffect(() => {
+    fetchRecipe();
+  }, [recipe]);
 
   function handleInput(e) {
     setRecipe(e.target.value);
-    console.log(recipeList);
   }
   return (
     <div className="w-75 mx-auto">
@@ -27,10 +30,10 @@ const SearchPage = () => {
           <input
             className="form-control me-2 rounded-pill"
             type="search"
-            placeholder="Search"
             aria-label="Search"
             value={recipe}
             onChange={handleInput}
+            placeholder="Find the best recipe across the world"
           />
         </form>
       </div>
