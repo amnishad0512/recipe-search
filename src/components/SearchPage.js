@@ -2,14 +2,12 @@ import React, { useEffect, useState } from "react";
 import RecipesList from "./RecipesList";
 
 const SearchPage = () => {
-  const [recipe, setRecipe] = useState("");
+  const [recipe, setRecipe] = useState("salad");
   const [recipeList, setRecipeList] = useState([]);
 
   async function fetchRecipe() {
     await fetch(
-      `https://api.edamam.com/search?app_id=eb10855f&app_key=a3b13f3aec7fc48dc23d56886270390c&q=${
-        recipe ? recipe : "pizza"
-      }`
+      `https://api.edamam.com/search?app_id=dbd03d4a&app_key=d277358557af4519d7f8394ca2e6fc4f&q=${recipe}`
     )
       .then(async (res) => await res.json())
       .then(async (res) => setRecipeList(res.hits));
@@ -18,7 +16,7 @@ const SearchPage = () => {
 
   useEffect(() => {
     fetchRecipe();
-  }, [recipe]);
+  }, []);
 
   function handleInput(e) {
     setRecipe(e.target.value);

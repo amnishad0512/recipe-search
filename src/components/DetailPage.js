@@ -1,6 +1,8 @@
 import React from "react";
+import { useParams } from "react-router";
 import "./DetailPage.css";
-const DetailPage = ({ id }) => {
+const DetailPage = () => {
+   const {title} =  useParams();
   return (
     <div className="container">
       <div className="row p-2">
@@ -12,7 +14,7 @@ const DetailPage = ({ id }) => {
         </div>
         <div className="col-md-8 col-sm-12 text-center d-flex justify-content-between flex-column">
           <div>
-            <p className="title my-1">Green salad with avocado</p>
+            <p className="title my-1">{title}</p>
             <p className="source">See full recipe on : BBC Good Food</p>
           </div>
           <div className="mx-auto">
