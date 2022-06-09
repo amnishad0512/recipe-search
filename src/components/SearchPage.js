@@ -2,9 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import RecipesList from "./RecipesList";
 import Filter from "./Filter";
 import { ListContext } from "../context/List";
+import Spinner from "./Spinner";
 
 const SearchPage = () => {
-  const [recipe, setRecipe] = useState("salad");
+  const [recipe, setRecipe] = useState("egg");
   const { setItem } = useContext(ListContext);
   async function fetchRecipe() {
     await fetch(
@@ -40,10 +41,20 @@ const SearchPage = () => {
             <option value="matar" />
             <option value="Biryani" />
             <option value="chicken" />
+            <option value="aam" />
+            <option value="dosa" />
+            <option value="egg" />
+            <option value="fish" />
+            <option value="ice" />
+            <option value="juice" />
+            <option value="oil" />
+            <option value="rice" />
+            <option value="soup" />
+            <option value="vodka" />
           </datalist>
         </form>
       </div>
-      <RecipesList/>
+      <RecipesList />
     </div>
   );
 };

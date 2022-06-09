@@ -3,3 +3,18 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
 }
+@media only screen and (max-width: 1020px) {
+  .gridContainer {
+  grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media only screen and (max-width: 815px) {
+  .gridContainer {
+  grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media only screen and (max-width: 510px) {
+  .gridContainer {
+  grid-template-columns: repeat(1, 1fr);
+  }
+}

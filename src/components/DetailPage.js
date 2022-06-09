@@ -2,9 +2,12 @@ import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router";
 import { ListContext } from "../context/List";
 import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 import "./DetailPage.css";
 const DetailPage = () => {
   const location = useLocation();
+  let navigate = useNavigate();
   return (
     <div className="container">
       <div className="row p-2">
@@ -20,7 +23,8 @@ const DetailPage = () => {
             </p>
           </div>
           <div className="mx-auto">
-            <button className="btn btn-dark disabled">Save</button>
+            <button className="btn btn-dark disabled mx-2">Save</button>
+            <button className="btn btn-dark" onClick={()=>navigate("/")}>Back</button>
             <div className="d-flex justify-content-center">
               <div>
                 <i class="fa-solid fa-envelope"></i>
@@ -63,7 +67,9 @@ const DetailPage = () => {
           <hr />
           <p>
             {Object.keys(location.state.totalNutrients).map(function (key) {
-              return <span>{location.state.totalNutrients[key].label+", "}</span>;
+              return (
+                <span>{location.state.totalNutrients[key].label + ", "}</span>
+              );
             })}
           </p>
         </div>

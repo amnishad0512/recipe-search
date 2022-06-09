@@ -2,10 +2,22 @@ import React from "react";
 import { Link, Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./Recipe.css";
-const Recipe = ({ title, img, calories, ingredientLines, type,source,url,totalNutrients }) => {
+import Spinner from "./Spinner";
+const Recipe = ({
+  title,
+  img,
+  calories,
+  ingredientLines,
+  type,
+  source,
+  url,
+  totalNutrients,
+}) => {
   let navigate = useNavigate();
   function handle() {
-    navigate(`/${title}`, { state: { title,img,ingredientLines,source,url,totalNutrients } });
+    navigate(`/${title}`, {
+      state: { title, img, ingredientLines, source, url, totalNutrients },
+    });
   }
 
   return (
@@ -20,9 +32,14 @@ const Recipe = ({ title, img, calories, ingredientLines, type,source,url,totalNu
         className="d-flex p-2 border-top border-bottom justify-content-around"
         style={{ fontSize: "12px" }}
       >
-        <div>{Math.trunc(calories)} CALORIES</div>
+        <div>
+          <span className="text-success">{Math.trunc(calories)}</span> CALORIES
+        </div>
         <div>|</div>
-        <div>{ingredientLines.length} INGREDIENTS</div>
+        <div>
+          <span className="text-success">{ingredientLines.length}</span>{" "}
+          INGREDIENTS
+        </div>
       </div>
       <div>
         <p className="fw-bold p-2" style={{ fontSize: "10px" }}>
