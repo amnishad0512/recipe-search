@@ -2,7 +2,6 @@
   width: 60%;
   height: 100vh;
   margin: auto;
-  background-color: green;
 }
 .title {
   font-size: 22px;
@@ -27,6 +26,4 @@ button {
     width: 70%;
   }
 }
-img {
-  width: 100%;
-}
+

@@ -1,41 +1,49 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import RecipesList from "./RecipesList";
+import Filter from "./Filter";
+import { ListContext } from "../context/List";
 
 const SearchPage = () => {
   const [recipe, setRecipe] = useState("salad");
-  const [recipeList, setRecipeList] = useState([]);
-
+  const { setItem } = useContext(ListContext);
   async function fetchRecipe() {
     await fetch(
       `https://api.edamam.com/search?app_id=dbd03d4a&app_key=d277358557af4519d7f8394ca2e6fc4f&q=${recipe}`
     )
-      .then(async (res) => await res.json())
-      .then(async (res) => setRecipeList(res.hits));
-    console.log("recipe=>", recipeList);
+      .then((res) => res.json())
+      .then((res) => setItem(res.hits));
   }
 
   useEffect(() => {
     fetchRecipe();
   }, []);
 
-  function handleInput(e) {
-    setRecipe(e.target.value);
+  function handleSubmit(e) {
+    e.preventDefault();
+    fetchRecipe();
   }
   return (
     <div className="w-75 mx-auto">
       <div className="w-50 mx-auto py-3">
-        <form className="d-flex" role="search">
+        <form onSubmit={handleSubmit}>
           <input
-            className="form-control me-2 rounded-pill"
-            type="search"
-            aria-label="Search"
+            className="form-control rounded-pill"
+            list="datalistOptions"
+            id="exampleDataList"
+            placeholder="Find the best recipes from across the web..."
             value={recipe}
-            onChange={handleInput}
-            placeholder="Find the best recipe across the world"
+            onChange={(e) => setRecipe(e.target.value)}
           />
+          <datalist id="datalistOptions">
+            <option value="salad" />
+            <option value="poha" />
+            <option value="matar" />
+            <option value="Biryani" />
+            <option value="chicken" />
+          </datalist>
         </form>
       </div>
-      <RecipesList recipeList={recipeList} />
+      <RecipesList/>
     </div>
   );
 };

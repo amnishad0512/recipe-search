@@ -1,22 +1,20 @@
 import React from "react";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
-const Recipe = ({ key, title, img, calories, ingredients, type }) => {
+import "./Recipe.css";
+const Recipe = ({ title, img, calories, ingredientLines, type,source,url,totalNutrients }) => {
   let navigate = useNavigate();
-  function handle(title) {
-    navigate(`/${title}`, { replace: true });
+  function handle() {
+    navigate(`/${title}`, { state: { title,img,ingredientLines,source,url,totalNutrients } });
   }
+
   return (
-    <div className="border p-1 w-25 my-2" onClick={()=>handle(title)}>
-      <div className="col-lg-3">
-        <img src={img} alt="" />
+    <div className="mainRecipe" onClick={() => handle()}>
+      <div className="img">
+        <img src={img} className="image" />
       </div>
       <div className="p-2 text-small">
-        <p>
-          {key}
-          {title}
-        </p>
+        <p>{title}</p>
       </div>
       <div
         className="d-flex p-2 border-top border-bottom justify-content-around"
@@ -24,7 +22,7 @@ const Recipe = ({ key, title, img, calories, ingredients, type }) => {
       >
         <div>{Math.trunc(calories)} CALORIES</div>
         <div>|</div>
-        <div>{ingredients.length} INGREDIENTS</div>
+        <div>{ingredientLines.length} INGREDIENTS</div>
       </div>
       <div>
         <p className="fw-bold p-2" style={{ fontSize: "10px" }}>
