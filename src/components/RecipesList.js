@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Recipe from "./Recipe";
 
-const RecipesList = () => {
+const RecipesList = ({ recipeList }) => {
+  const [recipeDetail, setRecipeDetail] = useState({});
   return (
     <div className="d-flex flex-wrap">
-      <Recipe />
-      <Recipe />
-      <Recipe />
-      <Recipe />
-      <Recipe />
-      <Recipe />
+      {recipeList.map((recipe) => {
+        setRecipeDetail()
+        console.log()
+        // return <Recipe  />;
+      })}
     </div>
   );
 };

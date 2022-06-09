@@ -18,6 +18,7 @@ const SearchPage = () => {
 
   function handleInput(e) {
     setRecipe(e.target.value);
+    console.log(recipeList);
   }
   return (
     <div className="w-75 mx-auto">
@@ -33,7 +34,7 @@ const SearchPage = () => {
           />
         </form>
       </div>
-      <RecipesList />
+      <RecipesList recipeList={recipeList} />
     </div>
   );
 };

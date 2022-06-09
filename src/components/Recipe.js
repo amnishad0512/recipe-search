@@ -12,10 +12,18 @@ const Recipe = () => {
       <div className="p-2 text-small">
         <p>Spinach Salad with Blood Oranges and Pistachios Recipe </p>
       </div>
-      <div className="d-flex p-2 border-top border-bottom" style={{fontSize:"12px"}}>
+      <div
+        className="d-flex p-2 border-top border-bottom justify-content-around"
+        style={{ fontSize: "12px" }}
+      >
         <div>0 CALORIES</div>
         <div>|</div>
         <div>12 INGREDIENTS</div>
+      </div>
+      <div>
+        <p className="fw-bold p-2" style={{ fontSize: "10px" }}>
+          Serious Eats
+        </p>
       </div>
     </div>
   );
