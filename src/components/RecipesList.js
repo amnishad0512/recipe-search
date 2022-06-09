@@ -1,18 +1,18 @@
 import React, { useContext } from "react";
 import Recipe from "./Recipe";
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuid } from "uuid";
 import "./RecipeList.css"
 import { ListContext } from "../context/List";
 
 const RecipesList = () => {
-  const { item, setItem } = useContext(ListContext);
+  const { item} = useContext(ListContext);
 
   return (
     <div className="gridContainer">
       {item.map((recipe) => {
         return item ? (
           <Recipe
-            key={uuidv4()}
+            key={uuid()}
             title={recipe.recipe.label}
             img={recipe.recipe.image}
             calories={recipe.recipe.calories}

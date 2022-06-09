@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import RecipesList from "./RecipesList";
-import Filter from "./Filter";
 import { ListContext } from "../context/List";
-import Spinner from "./Spinner";
 
 const SearchPage = () => {
   const [recipe, setRecipe] = useState("egg");

@@ -1,7 +1,6 @@
-import "./App.css";
 import SearchPage from "./components/SearchPage";
 import DetailPage from "./components/DetailPage";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
 function App() {
   return (
     <Routes>
