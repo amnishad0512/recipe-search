@@ -1,1 +1,3 @@
 Recipe search
+
+To find the recipe, you need to enter the name of the recipe and press Enter to see the result....

@@ -1,6 +1,4 @@
-import React, { useContext, useEffect } from "react";
-import { useParams } from "react-router";
-import { ListContext } from "../context/List";
+import React from "react";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
@@ -19,7 +17,7 @@ const DetailPage = () => {
             <p className="title my-1">{location.state.title}</p>
             <p className="source">
               See full recipe on :{" "}
-              <a href={location.state.url}>{location.state.source}</a>
+              <a href={location.state.url} target="_blank">{location.state.source}</a>
             </p>
           </div>
           <div className="mx-auto">
@@ -52,7 +50,7 @@ const DetailPage = () => {
       </div>
       <div className="row p-3">
         <div className="col-lg-6">
-          <p className="m-0 source">
+          <p className="m-0 fw-bold">
             {location.state.ingredientLines.length} Ingredients
           </p>
           <hr />
@@ -63,7 +61,7 @@ const DetailPage = () => {
           </div>
         </div>
         <div className="col-lg-6">
-          <p>Nutrition </p>
+          <p className="fw-bold">Nutrition </p>
           <hr />
           <p>
             {Object.keys(location.state.totalNutrients).map(function (key) {
